@@ -15,8 +15,11 @@ def Creat(cliente):
         print(f"Erro: {error}")
         cursor.close()
 
-def Read(cliente):
+def Read():
     cursor = db.connection.cursor()
+    sql = f'SELECT * FROM cliente'
+    cursor.execute(sql)
+    return cursor.fetchall()
 
 def Update(cliente):
     pass

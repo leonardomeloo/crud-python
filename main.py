@@ -12,3 +12,5 @@ if op == 1:
 
     ClienteController.Creat(cliente)
 
+elif op == 2:
+    print(ClienteController.Read())
