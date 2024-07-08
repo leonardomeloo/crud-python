@@ -63,5 +63,20 @@ def Update(opcao):
     finally:
         cursor.close()
 
-def Delete(cliente):
-    pass
+def Delete():
+    cursor = db.connection.cursor()
+    fullname = input("Digite o seu nome completo: ")
+    email = input("Digite o seu E-mail: ")
+    sql = 'DELETE FROM cliente WHERE fullname = %s and email = %s'
+    values = (fullname, email)
+
+    try:
+        cursor.execute(sql, values)
+        db.connection.commit()
+        print(f"{cursor.rowcount} registro deletado com sucesso.")
+    except Exception as error:
+        print(error)
+        db.connection.rollback()
+    finally:
+        cursor.close()
+        

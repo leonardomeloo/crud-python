@@ -20,3 +20,6 @@ elif op == 3:
     apply = input("->").upper()
 
     ClienteController.Update(apply)
+
+elif op == 4:
+    ClienteController.Delete()
