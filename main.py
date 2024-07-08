@@ -23,3 +23,6 @@ elif op == 3:
 
 elif op == 4:
     ClienteController.Delete()
+
+else:
+    print("Opção invalida")
