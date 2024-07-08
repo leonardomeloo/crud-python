@@ -13,6 +13,8 @@ def Creat(cliente):
     
     except Exception as error:
         print(f"Erro: {error}")
+        
+    finally:
         cursor.close()
 
 def Read():
@@ -21,8 +23,45 @@ def Read():
     cursor.execute(sql)
     return cursor.fetchall()
 
-def Update(cliente):
-    pass
+def Update(opcao):
+    
+    cursor = db.connection.cursor()
+    if opcao == "A":
+        email = input("Digite o seu E-mail: ")
+        old_value = input("Digite o valor atual: ")
+        new_value =  input("Atualize o valor: ")
+        sql = 'UPDATE cliente SET fullname = %s WHERE fullname = %s AND email = %s'
+        values = (new_value, old_value,  email)
+        
+    elif opcao == "B":
+        email = input("Digite o seu E-mail: ")
+        old_value = input("Digite o valor atual: ")
+        new_value =  input("Atualize o valor: ")
+        sql = 'UPDATE cliente SET age = %s WHERE age = %s AND AND email = %s'
+        values = (new_value, old_value, email)
+    elif opcao == "C":
+        email = input("Digite o seu E-mail: ")
+        old_value = input("Digite o valor atual: ")
+        new_value =  input("Atualize o valor: ")
+        sql = 'UPDATE cliente SET profession = %s WHERE profession = %s AND email = %s'
+        values = (new_value, old_value, email)
+    elif opcao == "D":
+        email = input("Digite o seu E-mail: ")
+        old_value = input("Digite o valor atual: ")
+        new_value =  input("Atualize o valor: ")
+        sql = 'UPDATE cliente SET email = %s WHERE email = %s AND email = %s'
+        values = (new_value, old_value, email)
+    else:
+        print('Valor incorreto.')
+    try:
+            cursor.execute(sql, values)
+            db.connection.commit()
+            print(f"{cursor.rowcount} registro(s) atualizado(s).")
+    except Exception as error:
+        print(f"Erro: {error}")
+        db.connection.rollback()
+    finally:
+        cursor.close()
 
 def Delete(cliente):
     pass

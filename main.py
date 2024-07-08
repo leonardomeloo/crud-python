@@ -14,3 +14,9 @@ if op == 1:
 
 elif op == 2:
     print(ClienteController.Read())
+
+elif op == 3:
+    print('O que deseja atualizar:\nA - Nome\nB - idade\nC - Profissão\nD - E-mail')
+    apply = input("->").upper()
+
+    ClienteController.Update(apply)
